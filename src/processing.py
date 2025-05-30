@@ -1,30 +1,25 @@
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 
-def filter_by_state(data: List[Dict], state: str = "EXECUTED") -> List[Dict]:
+def filter_by_state(operations: List[Dict[str, str]], state: Optional[str] = "EXECUTED") -> List[Dict[str, str]]:
     """
-    Фильтрует список операций по заданному состоянию (state).
+    Фильтрует список словарей по значению ключа 'state'.
 
-    :param data: Список словарей с данными об операциях.
-    :param state: Состояние, по которому нужно сделать фильтрацию.
-                  По умолчанию 'EXECUTED'.
-    :return: Новый список, содержащий только те словари, у которых
-             значение по ключу 'state' соответствует указанному параметру.
+    :param operations: Список словарей с операциями.
+    :param state: Значение для ключа 'state' (по умолчанию 'EXECUTED').
+    :return: Новый список словарей, содержащий только те словари,
+     у которых ключ 'state' соответствует указанному значению.
     """
-    return [item for item in data if item.get("state") == state]
+    return [operation for operation in operations if operation.get("state") == state]
 
 
-def sort_by_date(data: List[Dict], reverse: bool = True) -> List[Dict]:
+def sort_by_date(operations: List[Dict[str, str]], reverse: bool = True) -> List[Dict[str, str]]:
     """
-    Сортирует список операций по ключу 'date'.
+    Сортирует список словарей по дате.
 
-    :param data: Список словарей с данными об операциях.
-    :param reverse: Порядок сортировки:
-                    True — по убыванию (сначала самые новые),
-                    False — по возрастанию.
-                    По умолчанию True.
+    :param operations: Список словарей с операциями.
+    :param reverse: Порядок сортировки (по умолчанию — убывание).
     :return: Новый список, отсортированный по дате.
     """
-    # Преобразуем дату к объекту datetime, чтобы корректно отсортировать
-    return sorted(data, key=lambda x: datetime.fromisoformat(x["date"]), reverse=reverse)
+    return sorted(operations, key=lambda x: datetime.fromisoformat(x["date"]), reverse=reverse)

@@ -182,3 +182,17 @@ print(sorted_data_desc)
 #   {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}
 # ]
 ```
+## Покрытие тестами:
+
+| Name                        | Stmts   | Miss   | Cover   |
+|-----------------------------|---------|--------|---------|
+| src\__init__.py             | 0       | 0      | 100%    |
+| src\masks.py                | 12      | 0      | 100%    |
+| src\processing.py           | 6       | 0      | 100%    |
+| src\widget.py               | 18      | 0      | 100%    |
+| tests\__init__.py           | 0       | 0      | 100%    |
+| tests\test_masks.py         | 8       | 0      | 100%    |
+| tests\test_processing.py    | 11      | 0      | 100%    |
+| tests\test_widget.py        | 8       | 0      | 100%    |
+|-----------------------------| ------- | ------ | ------- |
+| TOTAL                       | 63      | 0      | 100%    |
